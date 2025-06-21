@@ -24,28 +24,28 @@ const migrationFiles = [
   'create-availability-table.sql',
   'create-general-inquiries-table.sql',
   'create-rpc-functions.sql',
-  'update-consultations-table.sql'
+  'update-consultations-table.sql',
 ];
 
 async function runMigrations() {
   console.log('Starting database migrations...');
-  
+
   for (const filename of migrationFiles) {
     try {
       console.log(`Processing migration: ${filename}`);
       const filePath = path.join(process.cwd(), 'scripts', filename);
-      
+
       // Skip if file doesn't exist
       if (!fs.existsSync(filePath)) {
         console.log(`Skipping migration ${filename} - file not found`);
         continue;
       }
-      
+
       const sqlContent = fs.readFileSync(filePath, 'utf8');
-      
+
       // Execute the SQL using Supabase's REST API
       const { error } = await supabase.rpc('exec_sql', { query: sqlContent });
-      
+
       if (error) {
         console.error(`Error executing ${filename}:`, error);
         // Don't exit, try the next migration
@@ -56,7 +56,7 @@ async function runMigrations() {
       console.error(`Failed to process ${filename}:`, err);
     }
   }
-  
+
   console.log('Migration process completed.');
 }
 

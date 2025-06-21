@@ -1,33 +1,46 @@
-import { Button } from "@/components/ui/button"
-import HeroSection from "@/components/sections/HeroSection"
-import ServicesSection from "@/components/sections/ServicesSection"
-import TestimonialsSection from "@/components/sections/TestimonialsSection"
-import StorySection from "@/components/sections/StorySection"
-import FounderSection from "@/components/sections/FounderSection"
-import MissionValuesSection from "@/components/sections/MissionValuesSection"
-import { 
-  aboutWhyChooseUsData, 
+import type { Metadata } from 'next';
+import { Button } from '@/components/ui/button';
+import HeroSection from '@/components/sections/HeroSection';
+import ServicesSection from '@/components/sections/ServicesSection';
+import TestimonialsSection from '@/components/sections/TestimonialsSection';
+import StorySection from '@/components/sections/StorySection';
+import FounderSection from '@/components/sections/FounderSection';
+import MissionValuesSection from '@/components/sections/MissionValuesSection';
+import { generatePageMetadata } from '@/lib/seo';
+import {
+  aboutWhyChooseUsData,
   aboutTestimonialsData,
   storyData,
   founderData,
-  missionValuesData 
-} from "@/lib/constants"
+  missionValuesData,
+} from '@/lib/constants';
+
+// Generate page-specific metadata for better SEO
+export const metadata: Metadata = generatePageMetadata(
+  'About Us | OGS Immigration Services | Falls Church, VA',
+  'Learn about OGS Immigration Services and our commitment to helping individuals navigate the immigration process with expertise and compassion. Meet our founder and discover our mission.',
+  '/api/og?title=About+OGS+Immigration+Services&type=about',
+  '/about'
+);
 
 export default function AboutPage() {
   return (
     <>
-      <HeroSection 
-        title={<>About OGS<br />Immigration Services</>}
+      <HeroSection
+        title={
+          <>
+            About OGS
+            <br />
+            Immigration Services
+          </>
+        }
         description="We are committed to helping individuals and families navigate the complex immigration process with expertise and compassion."
         heroClass="hero-about"
         heightClass="h-[500px]"
       />
 
       {/* Our Story Section */}
-      <StorySection
-        title={storyData.title}
-        paragraphs={storyData.paragraphs}
-      />
+      <StorySection title={storyData.title} paragraphs={storyData.paragraphs} />
 
       {/* Founder Section */}
       <FounderSection
@@ -55,10 +68,10 @@ export default function AboutPage() {
       />
 
       {/* Client Testimonials */}
-      <TestimonialsSection 
+      <TestimonialsSection
         title={aboutTestimonialsData.title}
         testimonials={aboutTestimonialsData.testimonials}
       />
     </>
-  )
+  );
 }

@@ -26,7 +26,7 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSending(true);
-    
+
     try {
       // Send confirmation email to the user
       await sendEmail({
@@ -49,7 +49,7 @@ export default function ContactPage() {
           </div>
         `,
       });
-      
+
       // Also send notification to admin
       await sendEmail({
         to: process.env.ADMIN_EMAIL || 'ghilomyonathan@gmail.com', // Your admin email
@@ -65,13 +65,13 @@ export default function ContactPage() {
           </div>
         `,
       });
-      
+
       toast({
         title: 'Message sent successfully',
         description: 'Thank you! We will contact you shortly.',
         variant: 'default',
       });
-      
+
       // Reset form after successful submission
       setFormData({
         name: '',
@@ -80,7 +80,6 @@ export default function ContactPage() {
         subject: 'Website Inquiry',
         message: '',
       });
-      
     } catch (error) {
       toast({
         title: 'Failed to send message',
@@ -102,13 +101,13 @@ export default function ContactPage() {
             Fill out the form below and we'll get back to you as soon as possible
           </p>
         </div>
-        
+
         <div className="bg-card rounded-lg shadow-md p-6 md:p-8">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="name">Full Name</Label>
-                <Input 
+                <Input
                   id="name"
                   name="name"
                   value={formData.name}
@@ -117,10 +116,10 @@ export default function ContactPage() {
                   placeholder="Your full name"
                 />
               </div>
-              
+
               <div className="space-y-2">
                 <Label htmlFor="email">Email Address</Label>
-                <Input 
+                <Input
                   id="email"
                   name="email"
                   type="email"
@@ -131,10 +130,10 @@ export default function ContactPage() {
                 />
               </div>
             </div>
-            
+
             <div className="space-y-2">
               <Label htmlFor="phone">Phone Number</Label>
-              <Input 
+              <Input
                 id="phone"
                 name="phone"
                 type="tel"
@@ -143,10 +142,10 @@ export default function ContactPage() {
                 placeholder="Your phone number (optional)"
               />
             </div>
-            
+
             <div className="space-y-2">
               <Label htmlFor="subject">Subject</Label>
-              <Input 
+              <Input
                 id="subject"
                 name="subject"
                 value={formData.subject}
@@ -155,10 +154,10 @@ export default function ContactPage() {
                 placeholder="What is your inquiry about?"
               />
             </div>
-            
+
             <div className="space-y-2">
               <Label htmlFor="message">Message</Label>
-              <Textarea 
+              <Textarea
                 id="message"
                 name="message"
                 value={formData.message}
@@ -169,20 +168,15 @@ export default function ContactPage() {
                 className="min-h-[120px]"
               />
             </div>
-            
+
             <div className="pt-4">
-              <Button 
-                type="submit"
-                className="w-full"
-                disabled={isSending}
-                size="lg"
-              >
+              <Button type="submit" className="w-full" disabled={isSending} size="lg">
                 {isSending ? 'Sending...' : 'Submit Inquiry'}
               </Button>
             </div>
           </form>
         </div>
-        
+
         <div className="text-center text-sm text-muted-foreground mt-6">
           <p>
             Your privacy is important to us. We'll never share your information with third parties.

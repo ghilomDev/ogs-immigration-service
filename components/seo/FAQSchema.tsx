@@ -9,11 +9,11 @@ interface FAQSchemaProps {
 
 // This component creates structured data for FAQ sections
 // It follows Google's recommended FAQ schema format for rich results
-export default function FAQSchema({ faqs, title = "Frequently Asked Questions" }: FAQSchemaProps) {
+export default function FAQSchema({ faqs, title = 'Frequently Asked Questions' }: FAQSchemaProps) {
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqs.map((faq) => ({
+    mainEntity: faqs.map(faq => ({
       '@type': 'Question',
       name: faq.question,
       acceptedAnswer: {

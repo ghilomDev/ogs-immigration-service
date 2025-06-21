@@ -1,4 +1,4 @@
-import { baseUrl } from "@/lib/seo";
+import { baseUrl } from '@/lib/seo';
 
 /**
  * Generate a robots.txt file

@@ -1,5 +1,5 @@
-import Script from 'next/script'
-import { siteInfo, baseUrl } from '@/lib/seo'
+import Script from 'next/script';
+import { siteInfo, baseUrl } from '@/lib/seo';
 
 // This component adds page-specific structured data for contact page SEO
 export default function ContactPageSchema() {
@@ -14,16 +14,16 @@ export default function ContactPageSchema() {
     provider: {
       '@type': 'LegalService',
       name: siteInfo.name,
-      url: baseUrl
+      url: baseUrl,
     },
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: siteInfo.address.phone,
       email: siteInfo.address.email,
       contactType: 'customer service',
-      availableLanguage: ['English', 'Spanish', 'Amharic', 'Tigrinya']
-    }
-  }
+      availableLanguage: ['English', 'Spanish', 'Amharic', 'Tigrinya'],
+    },
+  };
 
   return (
     <Script
@@ -31,5 +31,5 @@ export default function ContactPageSchema() {
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(contactPageSchema) }}
     />
-  )
+  );
 }

@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import React from 'react';
+import { Card, CardContent } from '@/components/ui/card';
+import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 export type ContactInfoCard = {
   iconName: string;
   title: string;
-  content: string;  // Changed from React.ReactNode to string
+  content: string; // Changed from React.ReactNode to string
 };
 
 export type ContactInfoSectionProps = {
@@ -19,7 +19,7 @@ const iconMap: Record<string, React.ElementType> = {
   MapPin,
   Phone,
   Mail,
-  Clock
+  Clock,
 };
 
 // Helper function to clean phone number (remove non-digits)
@@ -30,10 +30,10 @@ const cleanPhoneNumber = (phoneNumber: string): string => {
 // Helper function to format content based on iconName
 const formatContent = (iconName: string, content: string) => {
   switch (iconName) {
-    case "MapPin":
+    case 'MapPin':
       return (
         <p>
-          {content.split("\n").map((line, i, arr) => (
+          {content.split('\n').map((line, i, arr) => (
             <React.Fragment key={i}>
               {line}
               {i < arr.length - 1 && <br />}
@@ -41,7 +41,7 @@ const formatContent = (iconName: string, content: string) => {
           ))}
         </p>
       );
-    case "Phone":
+    case 'Phone':
       return (
         <p>
           <a href={`tel:${cleanPhoneNumber(content)}`} className="hover:text-blue-600">
@@ -49,7 +49,7 @@ const formatContent = (iconName: string, content: string) => {
           </a>
         </p>
       );
-    case "Mail":
+    case 'Mail':
       return (
         <p>
           <a href={`mailto:${content}`} className="hover:text-blue-600">
@@ -67,7 +67,7 @@ const ContactInfoSection = ({ cards }: ContactInfoSectionProps) => {
     <div className="grid md:grid-cols-3 gap-8 mb-16">
       {cards.map((card, index) => {
         const IconComponent = iconMap[card.iconName];
-        
+
         return (
           <Card key={index} className="text-center hover:shadow-lg transition-shadow">
             <CardContent className="p-8">
@@ -75,9 +75,7 @@ const ContactInfoSection = ({ cards }: ContactInfoSectionProps) => {
                 <IconComponent className="w-8 h-8 text-[#5046E5]" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">{card.title}</h3>
-              <div className="text-gray-600">
-                {formatContent(card.iconName, card.content)}
-              </div>
+              <div className="text-gray-600">{formatContent(card.iconName, card.content)}</div>
             </CardContent>
           </Card>
         );

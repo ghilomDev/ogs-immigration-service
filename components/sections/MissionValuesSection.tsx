@@ -1,5 +1,5 @@
-import React from "react";
-import { LucideIcon } from "lucide-react";
+import React from 'react';
+import { LucideIcon } from 'lucide-react';
 
 type ValueItemProps = {
   icon: LucideIcon;
@@ -34,7 +34,7 @@ const MissionValuesSection = ({
   missionParagraphs,
   valuesTitle,
   values,
-  backgroundColor = ""
+  backgroundColor = '',
 }: MissionValuesSectionProps) => {
   return (
     <section className={`py-16 ${backgroundColor}`}>
@@ -45,8 +45,8 @@ const MissionValuesSection = ({
             {missionParagraphs.map((paragraph, index) => (
               <p
                 key={index}
-                className={`${index === 0 ? "text-lg" : ""} text-gray-600 ${
-                  index < missionParagraphs.length - 1 ? "mb-6" : ""
+                className={`${index === 0 ? 'text-lg' : ''} text-gray-600 ${
+                  index < missionParagraphs.length - 1 ? 'mb-6' : ''
                 }`}
               >
                 {paragraph}

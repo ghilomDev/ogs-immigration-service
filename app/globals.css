@@ -135,7 +135,7 @@ html {
 
 /* Hero background images */
 .hero-home {
-  background-image: url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-EJxbEQ0jNChb6DlzJRvy4WbMXBP55p.png");
+  background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-EJxbEQ0jNChb6DlzJRvy4WbMXBP55p.png');
   background-size: cover;
   background-position: top center;
   background-repeat: no-repeat;
@@ -143,15 +143,15 @@ html {
 }
 
 .hero-about {
-  background-image: url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-9DklfNQWbP7DyDn60GeLIK6iQHvxIp.png");
+  background-image: url('/hero image/diversity-image.png');
   background-size: cover;
-  background-position: center;
+  background-position: 10% 19%;
   background-repeat: no-repeat;
   height: 450px;
 }
 
 .hero-services {
-  background-image: url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-LqVC9i2ZDvWTtNEi2QzakeUPhuoztJ.png");
+  background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-LqVC9i2ZDvWTtNEi2QzakeUPhuoztJ.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

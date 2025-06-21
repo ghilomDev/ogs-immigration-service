@@ -1,18 +1,18 @@
-"use client"
+'use client';
 
-import React from 'react'
+import React from 'react';
 
 interface TikTokIconProps {
-  className?: string
-  size?: number | string
-  color?: string
-  strokeWidth?: number
+  className?: string;
+  size?: number | string;
+  color?: string;
+  strokeWidth?: number;
 }
 
 export const TikTok = ({
-  className = "",
+  className = '',
   size = 24,
-  color = "currentColor",
+  color = 'currentColor',
   strokeWidth = 2,
 }: TikTokIconProps) => {
   return (
@@ -29,7 +29,7 @@ export const TikTok = ({
     >
       <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
     </svg>
-  )
-}
+  );
+};
 
-export default TikTok
+export default TikTok;

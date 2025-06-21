@@ -12,7 +12,7 @@ export const sendEmail = async ({
 }) => {
   try {
     console.log('Sending email to:', to);
-    
+
     const res = await fetch('/api/send-email', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -21,7 +21,7 @@ export const sendEmail = async ({
 
     // First, log the raw response status
     console.log('Email API response status:', res.status, res.statusText);
-    
+
     // Try to parse the JSON response
     let data;
     try {
@@ -32,9 +32,11 @@ export const sendEmail = async ({
       // If we can't parse JSON, try to get the text response
       const textResponse = await res.text().catch(() => 'No text response');
       console.log('Raw API response:', textResponse);
-      throw new Error(`API returned invalid JSON (status ${res.status}): ${textResponse.substring(0, 200)}`);
+      throw new Error(
+        `API returned invalid JSON (status ${res.status}): ${textResponse.substring(0, 200)}`
+      );
     }
-    
+
     // Check for both top-level success and nested errors in data.data.error
     if (!data.success || (data.data && data.data.error)) {
       const errorDetails = data.error || (data.data && data.data.error) || 'Unknown error';

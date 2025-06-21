@@ -1,5 +1,5 @@
-import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import React from 'react';
+import { Card, CardContent } from '@/components/ui/card';
 
 export type FAQItem = {
   question: string;
@@ -12,11 +12,7 @@ export type FAQSectionProps = {
   backgroundColor?: string;
 };
 
-const FAQSection = ({
-  title,
-  faqs,
-  backgroundColor = "bg-gray-50"
-}: FAQSectionProps) => {
+const FAQSection = ({ title, faqs, backgroundColor = 'bg-gray-50' }: FAQSectionProps) => {
   return (
     <section className={`py-16 ${backgroundColor}`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,12 +21,8 @@ const FAQSection = ({
           {faqs.map((faq, index) => (
             <Card key={index}>
               <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                  {faq.question}
-                </h3>
-                <p className="text-gray-600">
-                  {faq.answer}
-                </p>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">{faq.question}</h3>
+                <p className="text-gray-600">{faq.answer}</p>
               </CardContent>
             </Card>
           ))}

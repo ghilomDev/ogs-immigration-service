@@ -1,13 +1,14 @@
-import type { Metadata } from 'next'
+import type { Metadata } from 'next';
 
 // Base URL for the website (used for canonical URLs and site maps)
-export const baseUrl = 'https://ogsimmigrationservices.com'
+export const baseUrl = 'https://ogsimmigrationservices.com';
 
 // Company/website information constants
 export const siteInfo = {
   name: 'OGS Immigration Services',
   title: 'OGS Immigration Services | Immigration Assistance in Falls Church, VA',
-  description: 'Expert assistance with USCIS forms, asylum applications, certified document translation, and immigration services in Falls Church, VA. Free consultations available.',
+  description:
+    'Expert assistance with USCIS forms, asylum applications, certified document translation, and immigration services in Falls Church, VA. Free consultations available.',
   keywords: [
     'immigration services',
     'USCIS form preparation',
@@ -38,17 +39,13 @@ export const siteInfo = {
     facebook: 'OGSImmigrationServices',
   },
   // Opening Hours for schema.org structured data
-  openingHours: [
-    'Monday-Friday 09:00-18:00',
-    'Saturday 10:00-16:00',
-    'Sunday By Appointment',
-  ],
+  openingHours: ['Monday-Friday 09:00-18:00', 'Saturday 10:00-16:00', 'Sunday By Appointment'],
   sameAs: [
     'https://www.facebook.com/OGSImmigrationServices',
     'https://twitter.com/OGSImmigration',
     'https://www.linkedin.com/company/ogs-immigration-services',
   ],
-}
+};
 
 // Root metadata for layout.tsx
 export const rootMetadata: Metadata = {
@@ -128,7 +125,7 @@ export const rootMetadata: Metadata = {
     'geo.region': 'US-VA',
     'geo.placename': 'Falls Church',
   },
-}
+};
 
 // Schema.org structured data for LocalBusiness (JSON-LD)
 export const localBusinessSchema = {
@@ -203,7 +200,8 @@ export const localBusinessSchema = {
         itemOffered: {
           '@type': 'Service',
           name: 'USCIS Form Preparation',
-          description: 'Expert assistance with all USCIS forms, ensuring accuracy and timely submission for a smooth application process.',
+          description:
+            'Expert assistance with all USCIS forms, ensuring accuracy and timely submission for a smooth application process.',
         },
       },
       {
@@ -211,7 +209,8 @@ export const localBusinessSchema = {
         itemOffered: {
           '@type': 'Service',
           name: 'Document Translation',
-          description: 'Accurate and certified translations of legal documents for immigration purposes, maintaining linguistic integrity.',
+          description:
+            'Accurate and certified translations of legal documents for immigration purposes, maintaining linguistic integrity.',
         },
       },
       {
@@ -219,12 +218,13 @@ export const localBusinessSchema = {
         itemOffered: {
           '@type': 'Service',
           name: 'Asylum Case Support',
-          description: 'Compassionate and thorough support for asylum cases, helping you navigate complex legal requirements with dignity.',
+          description:
+            'Compassionate and thorough support for asylum cases, helping you navigate complex legal requirements with dignity.',
         },
       },
     ],
   },
-}
+};
 
 // Generate page-specific metadata
 export function generatePageMetadata(
@@ -234,11 +234,11 @@ export function generatePageMetadata(
   path?: string
 ): Metadata {
   // Default to site description if page description is not provided
-  const description = pageDescription || siteInfo.description
+  const description = pageDescription || siteInfo.description;
   // Default to site image if page image is not provided
-  const image = pageImage || siteInfo.social.image
+  const image = pageImage || siteInfo.social.image;
   // Default to base URL if path is not provided
-  const url = path ? `${baseUrl}${path}` : baseUrl
+  const url = path ? `${baseUrl}${path}` : baseUrl;
 
   return {
     title: pageTitle,
@@ -264,5 +264,5 @@ export function generatePageMetadata(
     alternates: {
       canonical: url,
     },
-  }
+  };
 }

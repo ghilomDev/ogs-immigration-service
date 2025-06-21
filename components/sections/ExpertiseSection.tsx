@@ -13,8 +13,8 @@ interface ExpertiseSectionProps {
 }
 
 export default function ExpertiseSection({
-  title = "Our Expertise",
-  items = defaultExpertiseItems
+  title = 'Our Expertise',
+  items = defaultExpertiseItems,
 }: ExpertiseSectionProps) {
   return (
     <section className="py-16">
@@ -27,9 +27,7 @@ export default function ExpertiseSection({
                 <item.icon className="w-8 h-8 text-[#5046E5]" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
-              <p className="text-gray-600 text-sm">
-                {item.description}
-              </p>
+              <p className="text-gray-600 text-sm">{item.description}</p>
             </div>
           ))}
         </div>
@@ -40,23 +38,27 @@ export default function ExpertiseSection({
 
 const defaultExpertiseItems: ExpertiseItem[] = [
   {
-    title: "USCIS Forms Assistance",
-    description: "Expert guidance and meticulous preparation for all USCIS forms and applications, ensuring accuracy and compliance.",
-    icon: FileText
+    title: 'USCIS Forms Assistance',
+    description:
+      'Expert guidance and meticulous preparation for all USCIS forms and applications, ensuring accuracy and compliance.',
+    icon: FileText,
   },
   {
-    title: "Asylum Case Support",
-    description: "Compassionate and thorough assistance with asylum cases, navigating complex asylum applications and legal processes.",
-    icon: Shield
+    title: 'Asylum Case Support',
+    description:
+      'Compassionate and thorough assistance with asylum cases, navigating complex asylum applications and legal processes.',
+    icon: Shield,
   },
   {
-    title: "Visa Application Help",
-    description: "Comprehensive assistance with various visa applications, from visitor to work visas, simplifying the process.",
-    icon: Plane
+    title: 'Visa Application Help',
+    description:
+      'Comprehensive assistance with various visa applications, from visitor to work visas, simplifying the process.',
+    icon: Plane,
   },
   {
-    title: "Certified Translations",
-    description: "Accurate and certified translation services for legal documents, ensuring recognition by official bodies.",
-    icon: Languages
-  }
+    title: 'Certified Translations',
+    description:
+      'Accurate and certified translation services for legal documents, ensuring recognition by official bodies.',
+    icon: Languages,
+  },
 ];

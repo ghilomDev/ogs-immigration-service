@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Send, Clock, CheckCircle, X, Loader2 } from "lucide-react";
-import { createConsultation } from "@/app/actions/consultation";
-import { sendEmailsAfterSubmission } from "@/lib/email-utils";
+import React, { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { MapPin, Send, Clock, CheckCircle, X, Loader2 } from 'lucide-react';
+import { createConsultation } from '@/app/actions/consultation';
+import { sendEmailsAfterSubmission } from '@/lib/email-utils';
 
 export type ServiceOption = {
   value: string;
@@ -29,15 +29,18 @@ export type ContactFormSectionProps = {
 };
 
 const ContactFormSection = ({
-  formTitle = "Send Us a Message",
-  mapTitle = "Find Us Here",
-  address = "3825 S George Mason Dr, Suite C\nFalls Church, VA 22041",
+  formTitle = 'Send Us a Message',
+  mapTitle = 'Find Us Here',
+  address = '3825 S George Mason Dr, Suite C\nFalls Church, VA 22041',
   serviceOptions,
   officeHours,
-  emergencyText = "Emergency consultations available. Call us for urgent immigration matters."
+  emergencyText = 'Emergency consultations available. Call us for urgent immigration matters.',
 }: ContactFormSectionProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+  const [submitMessage, setSubmitMessage] = useState<{
+    type: 'success' | 'error';
+    text: string;
+  } | null>(null);
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -46,62 +49,65 @@ const ContactFormSection = ({
 
     try {
       const formData = new FormData(e.currentTarget);
-      
+
       // Convert form data to match ConsultationBooking format
-      const name = formData.get("name") as string;
-      const nameParts = name.split(" ");
+      const name = formData.get('name') as string;
+      const nameParts = name.split(' ');
       const firstName = nameParts[0];
-      const lastName = nameParts.length > 1 ? nameParts.slice(1).join(" ") : "";
-      const email = formData.get("email") as string;
-      const phone = formData.get("phone") as string;
-      const service = formData.get("service") as string;
-      const message = formData.get("message") as string;
-      
+      const lastName = nameParts.length > 1 ? nameParts.slice(1).join(' ') : '';
+      const email = formData.get('email') as string;
+      const phone = formData.get('phone') as string;
+      const service = formData.get('service') as string;
+      const message = formData.get('message') as string;
+
       // Replace with firstName and lastName fields
-      formData.delete("name");
-      formData.append("firstName", firstName);
-      formData.append("lastName", lastName);
-      
+      formData.delete('name');
+      formData.append('firstName', firstName);
+      formData.append('lastName', lastName);
+
       // Add message as additional_info
       if (message) {
-        formData.append("additional_info", message as string);
+        formData.append('additional_info', message as string);
       }
-      
+
       // Save to database first
       const result = await createConsultation(formData);
-      
+
       // If database submission was successful, send emails
       if (result.success) {
         // Use the reusable function to send emails in background
-        sendEmailsAfterSubmission({
-          name,
-          email,
-          phone,
-          service,
-          message
-        }, 100); // 100 millisecond delay
+        sendEmailsAfterSubmission(
+          {
+            name,
+            email,
+            phone,
+            service,
+            message,
+          },
+          100
+        ); // 100 millisecond delay
       }
 
       if (result.success) {
-        setSubmitMessage({ 
-          type: "success", 
-          text: "Thank you! Your message has been sent successfully."
+        setSubmitMessage({
+          type: 'success',
+          text: 'Thank you! Your message has been sent successfully.',
         });
         // Reset form - safely check if the form element exists before calling reset
         if (e.currentTarget && typeof e.currentTarget.reset === 'function') {
           e.currentTarget.reset();
         }
       } else {
-        setSubmitMessage({ 
-          type: "error", 
-          text: result.error || "Failed to send message. Please try again."
+        setSubmitMessage({
+          type: 'error',
+          text: result.error || 'Failed to send message. Please try again.',
         });
       }
     } catch (error) {
-      console.error("Form submission error:", error);
-      setSubmitMessage({ 
-        type: "error", 
-        text: "An unexpected error occurred. Please try again."
+      console.error('Form submission error:', error);
+      setSubmitMessage({
+        type: 'error',
+        text: 'An unexpected error occurred. Please try again.',
       });
     } finally {
       setIsSubmitting(false);
@@ -116,13 +122,13 @@ const ContactFormSection = ({
         {submitMessage && (
           <div
             className={`mb-6 p-4 rounded-lg ${
-              submitMessage.type === "success"
-                ? "bg-green-50 text-green-800 border border-green-200"
-                : "bg-red-50 text-red-800 border border-red-200"
+              submitMessage.type === 'success'
+                ? 'bg-green-50 text-green-800 border border-green-200'
+                : 'bg-red-50 text-red-800 border border-red-200'
             }`}
           >
             <div className="flex items-center">
-              {submitMessage.type === "success" ? (
+              {submitMessage.type === 'success' ? (
                 <CheckCircle className="w-5 h-5 mr-2" />
               ) : (
                 <X className="w-5 h-5 mr-2" />
@@ -136,19 +142,42 @@ const ContactFormSection = ({
             <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
               Full Name *
             </label>
-            <Input id="name" name="name" type="text" placeholder="Enter your full name" className="w-full" required disabled={isSubmitting} />
+            <Input
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Enter your full name"
+              className="w-full"
+              required
+              disabled={isSubmitting}
+            />
           </div>
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
               Email Address *
             </label>
-            <Input id="email" name="email" type="email" placeholder="your@email.com" className="w-full" required disabled={isSubmitting} />
+            <Input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="your@email.com"
+              className="w-full"
+              required
+              disabled={isSubmitting}
+            />
           </div>
           <div>
             <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
               Phone Number
             </label>
-            <Input id="phone" name="phone" type="tel" placeholder="(571) 000-0000" className="w-full" disabled={isSubmitting} />
+            <Input
+              id="phone"
+              name="phone"
+              type="tel"
+              placeholder="(571) 000-0000"
+              className="w-full"
+              disabled={isSubmitting}
+            />
           </div>
           <div>
             <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
@@ -182,8 +211,8 @@ const ContactFormSection = ({
               disabled={isSubmitting}
             />
           </div>
-          <Button 
-            type="submit" 
+          <Button
+            type="submit"
             className="w-full bg-[#5046E5] hover:bg-[#4338CA] text-white py-3"
             disabled={isSubmitting}
           >
@@ -211,12 +240,14 @@ const ContactFormSection = ({
           <div className="text-center">
             <MapPin className="w-12 h-12 text-gray-400 mx-auto mb-2" />
             <p className="text-gray-500 font-medium">Interactive map coming soon!</p>
-            <p className="text-sm text-gray-400">{address.split('\n').map((line, i) => (
-              <React.Fragment key={i}>
-                {line}
-                {i < address.split('\n').length - 1 && <br />}
-              </React.Fragment>
-            ))}</p>
+            <p className="text-sm text-gray-400">
+              {address.split('\n').map((line, i) => (
+                <React.Fragment key={i}>
+                  {line}
+                  {i < address.split('\n').length - 1 && <br />}
+                </React.Fragment>
+              ))}
+            </p>
           </div>
         </div>
 

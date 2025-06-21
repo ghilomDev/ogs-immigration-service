@@ -1,20 +1,20 @@
 // OG Image Component for dynamic social sharing images
 // This will be used to generate the OpenGraph preview images
 
-import { ImageResponse } from 'next/og'
-import { siteInfo } from '@/lib/seo'
- 
-export const runtime = 'edge'
- 
+import { ImageResponse } from 'next/og';
+import { siteInfo } from '@/lib/seo';
+
+export const runtime = 'edge';
+
 export async function GET(request: Request) {
   try {
-    const { searchParams } = new URL(request.url)
-    
+    const { searchParams } = new URL(request.url);
+
     // Dynamic parameters from the URL
-    const title = searchParams.get('title') || siteInfo.title
-    const description = searchParams.get('description') || siteInfo.description
-    const type = searchParams.get('type') || 'website'
-    
+    const title = searchParams.get('title') || siteInfo.title;
+    const description = searchParams.get('description') || siteInfo.description;
+    const type = searchParams.get('type') || 'website';
+
     return new ImageResponse(
       (
         <div
@@ -90,17 +90,21 @@ export async function GET(request: Request) {
               color: 'white',
             }}
           >
-            {type === 'service' ? 'Services' : type === 'contact' ? 'Contact Us' : 'Immigration Experts'}
+            {type === 'service'
+              ? 'Services'
+              : type === 'contact'
+                ? 'Contact Us'
+                : 'Immigration Experts'}
           </div>
         </div>
       ),
       {
         width: 1200,
         height: 630,
-      },
-    )
+      }
+    );
   } catch (e) {
-    console.log(`${e}`)
-    return new Response('Failed to generate the image', { status: 500 })
+    console.log(`${e}`);
+    return new Response('Failed to generate the image', { status: 500 });
   }
 }

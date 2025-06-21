@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Convert SVG to PNG</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .container { margin-bottom: 30px; }
+        canvas { border: 1px solid #ddd; margin: 10px 0; }
+        button { background: #5046E5; color: white; border: none; padding: 10px 15px; cursor: pointer; margin: 5px 0; }
+    </style>
+</head>
+<body>
+    <h1>SVG to PNG Converter for Favicons</h1>
+
+    <div class="container">
+        <h2>Original SVG</h2>
+        <img id="svgImage" src="/images/logo-2.svg" alt="Original SVG" style="width: 200px; height: 200px;">
+    </div>
+
+    <div class="container">
+        <h2>Convert to PNG</h2>
+        <button onclick="convertToPNG(16)">Generate 16x16 Favicon</button>
+        <button onclick="convertToPNG(32)">Generate 32x32 Favicon</button>
+        <button onclick="convertToPNG(180)">Generate 180x180 Apple Touch Icon</button>
+        <button onclick="convertToPNG(192)">Generate 192x192 Android Icon</button>
+        <button onclick="convertToPNG(512)">Generate 512x512 Android Icon</button>
+    </div>
+
+    <div class="container">
+        <h2>Result</h2>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function convertToPNG(size) {
+            const svgImage = document.getElementById('svgImage');
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            
+            // Create a new image to draw the SVG
+            const img = new Image();
+            img.onload = function() {
+                // Clear canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Draw SVG to canvas
+                ctx.drawImage(img, 0, 0, size, size);
+                
+                // Convert to data URL
+                const dataUrl = canvas.toDataURL('image/png');
+                
+                // Display result
+                const resultDiv = document.getElementById('result');
+                
+                // Create download link
+                const downloadLink = document.createElement('a');
+                downloadLink.href = dataUrl;
+                let filename = '';
+                
+                if (size === 16) {
+                    filename = 'favicon-16x16.png';
+                } else if (size === 32) {
+                    filename = 'favicon-32x32.png';
+                } else if (size === 180) {
+                    filename = 'apple-touch-icon.png';
+                } else if (size === 192) {
+                    filename = 'android-chrome-192x192.png';
+                } else if (size === 512) {
+                    filename = 'android-chrome-512x512.png';
+                }
+                
+                downloadLink.download = filename;
+                downloadLink.innerHTML = `Download ${size}x${size} PNG (${filename})`;
+                downloadLink.style.display = 'block';
+                downloadLink.style.margin = '10px 0';
+                
+                // Add the canvas and download link
+                const containerDiv = document.createElement('div');
+                containerDiv.style.marginBottom = '20px';
+                containerDiv.appendChild(canvas);
+                containerDiv.appendChild(document.createElement('br'));
+                containerDiv.appendChild(downloadLink);
+                
+                resultDiv.appendChild(containerDiv);
+            };
+            
+            // Set the source of the image
+            img.src = svgImage.src;
+        }
+    </script>
+</body>
+</html>

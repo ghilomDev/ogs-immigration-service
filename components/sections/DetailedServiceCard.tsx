@@ -1,11 +1,22 @@
-"use client";
+'use client';
 
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Clock, CheckCircle, FileText, Shield, Languages, Plane, Users, Building, Award, LucideIcon } from "lucide-react";
-import React from "react";
-import Link from "next/link";
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import {
+  Clock,
+  CheckCircle,
+  FileText,
+  Shield,
+  Languages,
+  Plane,
+  Users,
+  Building,
+  Award,
+  LucideIcon,
+} from 'lucide-react';
+import React from 'react';
+import Link from 'next/link';
 
 export type ServiceFeature = {
   text: string;
@@ -15,7 +26,7 @@ export type DetailedServiceCardProps = {
   iconName: string; // Changed from icon: React.ElementType to iconName: string
   title: string;
   badgeText?: string;
-  badgeColor?: "green" | "blue" | "purple" | "orange" | string;
+  badgeColor?: 'green' | 'blue' | 'purple' | 'orange' | string;
   description: string;
   features: ServiceFeature[];
   processingTime: string;
@@ -24,14 +35,14 @@ export type DetailedServiceCardProps = {
 
 const getBadgeColors = (color: string) => {
   switch (color) {
-    case "green":
-      return "bg-green-100 text-green-800";
-    case "blue":
-      return "bg-blue-100 text-blue-800";
-    case "purple":
-      return "bg-purple-100 text-purple-800";
-    case "orange":
-      return "bg-orange-100 text-orange-800";
+    case 'green':
+      return 'bg-green-100 text-green-800';
+    case 'blue':
+      return 'bg-blue-100 text-blue-800';
+    case 'purple':
+      return 'bg-purple-100 text-purple-800';
+    case 'orange':
+      return 'bg-orange-100 text-orange-800';
     default:
       return color;
   }
@@ -47,21 +58,21 @@ const iconMap: Record<string, LucideIcon> = {
   Building,
   Award,
   CheckCircle,
-  Clock
+  Clock,
 };
 
 export function DetailedServiceCard({
   iconName,
   title,
   badgeText,
-  badgeColor = "green",
+  badgeColor = 'green',
   description,
   features,
   processingTime,
-  learnMoreHref = "/services",
+  learnMoreHref = '/services',
 }: DetailedServiceCardProps) {
   const badgeColorClasses = getBadgeColors(badgeColor);
-  
+
   // Get the icon component from the map, or use FileText as default
   const Icon = iconMap[iconName] || FileText;
 
@@ -91,14 +102,14 @@ export function DetailedServiceCard({
             <Clock className="w-4 h-4 mr-1" />
             <span>{processingTime}</span>
           </div>
-          <Link href={learnMoreHref}>
+          {/* <Link href={learnMoreHref}>
             <Button 
               variant="outline" 
               className="border-[#5046E5] text-[#5046E5] hover:bg-blue-50"
             >
               Learn More
             </Button>
-          </Link>
+          </Link> */}
         </div>
       </CardContent>
     </Card>

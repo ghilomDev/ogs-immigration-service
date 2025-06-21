@@ -1,6 +1,6 @@
 'use server';
 
-import { sendEmailFromServer } from "@/lib/email-server";
+import { sendEmailFromServer } from '@/lib/email-server';
 
 export async function sendContactEmails(data: {
   name: string;
@@ -10,16 +10,16 @@ export async function sendContactEmails(data: {
   message: string;
 }) {
   const { name, email, phone, service, message } = data;
-  
+
   try {
-    console.log("[Server Action] Starting email sending process");
+    console.log('[Server Action] Starting email sending process');
     console.log(`[Server Action] Sending confirmation email to: ${email}`);
-    
+
     // Send confirmation email to the user
-   const userEmailResponse = await sendEmailFromServer({
-  to: email,
-  subject: 'We’ve Received Your Inquiry – OGS Immigration',
-  message: `
+    const userEmailResponse = await sendEmailFromServer({
+      to: email,
+      subject: 'We’ve Received Your Inquiry – OGS Immigration',
+      message: `
     <div style="background-color: #f9f9f9; padding: 40px 0; font-family: Arial, sans-serif; color: #333;">
       <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
         <tr>
@@ -29,7 +29,7 @@ export async function sendContactEmails(data: {
               <!-- Logo -->
               <tr>
                 <td align="center" style="padding-bottom: 30px;">
-                  <img src="https://ogsimmigration.com/placeholder-logo.png" alt="OGS Immigration" width="150" style="display: block;" />
+                  <img src="https://ogsimmigration.com/images/logo-2.svg" alt="OGS Immigration" width="150" style="display: block;" />
                 </td>
               </tr>
 
@@ -93,11 +93,10 @@ export async function sendContactEmails(data: {
       </table>
     </div>
   `,
-});
+    });
 
-    
-    console.log("[Server Action] User confirmation email sent successfully");
-    
+    console.log('[Server Action] User confirmation email sent successfully');
+
     // Also send notification to admin
     const adminEmail = process.env.ADMIN_EMAIL || 'ghilomyonathan@gmail.com';
     console.log(`[Server Action] Sending notification email to admin: ${adminEmail}`);
@@ -154,15 +153,15 @@ export async function sendContactEmails(data: {
         </div>
       `,
     });
-    
-    console.log("[Server Action] Admin notification email sent successfully");
-    
+
+    console.log('[Server Action] Admin notification email sent successfully');
+
     return { success: true };
   } catch (error) {
-    console.error("Failed to send email notifications:", error);
-    return { 
-      success: false, 
-      error: error instanceof Error ? error.message : "Unknown error sending emails" 
+    console.error('Failed to send email notifications:', error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error sending emails',
     };
   }
 }

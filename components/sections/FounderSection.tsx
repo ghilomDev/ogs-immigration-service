@@ -1,8 +1,8 @@
-import React from "react";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { StaticImageData } from "next/image";
+import React from 'react';
+import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { StaticImageData } from 'next/image';
 
 export type FounderSectionProps = {
   badgeText: string;
@@ -23,9 +23,9 @@ const FounderSection = ({
   imageSrc,
   imageAlt,
   buttonText,
-  buttonLink = "/schedule",
-  buttonColor = "bg-[#5046E5]",
-  buttonHoverColor = "hover:bg-blue-800"
+  buttonLink = '/schedule',
+  buttonColor = 'bg-[#5046E5]',
+  buttonHoverColor = 'hover:bg-blue-800',
 }: FounderSectionProps) => {
   return (
     <section className="py-16">
@@ -49,8 +49,8 @@ const FounderSection = ({
             {paragraphs.map((paragraph, index) => (
               <p
                 key={index}
-                className={`${index === 0 ? "text-lg" : ""} text-gray-600 ${
-                  index < paragraphs.length - 1 ? "mb-6" : "mb-8"
+                className={`${index === 0 ? 'text-lg' : ''} text-gray-600 ${
+                  index < paragraphs.length - 1 ? 'mb-6' : 'mb-8'
                 }`}
               >
                 {paragraph}
