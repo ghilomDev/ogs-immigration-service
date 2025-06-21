@@ -137,8 +137,9 @@ html {
 .hero-home {
   background-image: url("https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-EJxbEQ0jNChb6DlzJRvy4WbMXBP55p.png");
   background-size: cover;
-  background-position: center;
+  background-position: top center;
   background-repeat: no-repeat;
+  height: 450px;
 }
 
 .hero-about {
@@ -146,6 +147,7 @@ html {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  height: 450px;
 }
 
 .hero-services {
@@ -153,6 +155,7 @@ html {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  height: 450px;
 }
 
 /* Hero overlay */

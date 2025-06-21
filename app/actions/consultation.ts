@@ -5,16 +5,28 @@ import type { ConsultationBooking } from "@/lib/supabase"
 
 export async function createConsultation(formData: FormData) {
   try {
+    // Get values from form data
+    const appointmentDate = formData.get("appointmentDate") as string | null;
+    const appointmentTime = formData.get("appointmentTime") as string | null;
+    
+    // Create consultation data object
     const consultationData: Omit<ConsultationBooking, "id" | "created_at" | "updated_at"> = {
       first_name: formData.get("firstName") as string,
       last_name: formData.get("lastName") as string,
       email: formData.get("email") as string,
       phone: formData.get("phone") as string,
-      appointment_date: formData.get("appointmentDate") as string,
-      appointment_time: formData.get("appointmentTime") as string,
       service_type: (formData.get("service") as string) || null,
       additional_info: (formData.get("message") as string) || null,
       status: "pending",
+    }
+    
+    // Only add appointment details if they exist
+    if (appointmentDate && appointmentDate.trim() !== '') {
+      consultationData.appointment_date = appointmentDate;
+    }
+    
+    if (appointmentTime && appointmentTime.trim() !== '') {
+      consultationData.appointment_time = appointmentTime;
     }
 
     const { data, error } = await supabase.from("consultations").insert([consultationData]).select().single()

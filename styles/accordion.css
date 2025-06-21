@@ -1,0 +1,42 @@
+/* Custom CSS for FAQAccordionSection */
+.custom-accordion-trigger:hover {
+  text-decoration: none !important;
+  background-color: transparent !important;
+}
+
+.custom-accordion-item {
+  margin-bottom: 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  overflow: hidden;
+}
+
+.custom-accordion-content {
+  transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes smoothAccordionDown {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes smoothAccordionUp {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+.custom-accordion-content[data-state='open'] {
+  animation: smoothAccordionDown 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.custom-accordion-content[data-state='closed'] {
+  animation: smoothAccordionUp 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}

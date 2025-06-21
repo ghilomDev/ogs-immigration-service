@@ -1,15 +1,19 @@
 import type { Metadata } from 'next'
 import { Button } from "@/components/ui/button"
-import { Mail, Phone, MapPin, UserPlus } from "lucide-react"
+import { Mail, Phone, MapPin, UserPlus, Facebook, Instagram, Linkedin, Twitter } from "lucide-react"
+import TikTok from "@/components/icons/TikTok"
 import { ActiveLink } from '@/components/active-link'
+import { MobileNav } from '@/components/mobile-nav'
+import NavigationBookingButton from '@/components/NavigationBookingButton'
+import FooterBookingButton from '@/components/FooterBookingButton'
 import Link from 'next/link'
 import './globals.css'
+import '@/styles/accordion.css'
+import { rootMetadata, localBusinessSchema } from '@/lib/seo'
+import Script from 'next/script'
 
-export const metadata: Metadata = {
-  title: 'OGS Immigration Services',
-  description: 'Your trusted partner in immigration legal services',
-  generator: 'v0.dev',
-}
+// Use the enhanced SEO metadata from our seo.ts file
+export const metadata: Metadata = rootMetadata
 
 export default function RootLayout({
   children,
@@ -18,6 +22,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Structured data for better SEO */}
+        <Script
+          id="schema-structured-data"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
+        
+        {/* Google Analytics / Tag Manager script would go here */}
+      </head>
       <body>
         {/* Contact Info Bar */}
         <div className="nav-contact-info">
@@ -28,7 +42,7 @@ export default function RootLayout({
                   <Phone className="w-4 h-4" />
                   <span>(571) 351-3940</span>
                 </a>
-                <a href="mailto:openglobesolutions@gmail.com" className="flex items-center space-x-1 hidden sm:flex">
+                <a href="mailto:openglobesolutions@gmail.com" className="items-center space-x-1 hidden sm:flex">
                   <Mail className="w-4 h-4" />
                   <span>openglobesolutions@gmail.com</span>
                 </a>
@@ -64,21 +78,24 @@ export default function RootLayout({
                 <ActiveLink href="/contact">Contact</ActiveLink>
                 <ActiveLink href="/schedule">Schedule</ActiveLink>
               </div>
-              <div className="flex items-center space-x-3">
+                {/* Mobile Navigation */}
+                <MobileNav />
+              <div className="items-center space-x-3 hidden xl:flex">
                 <a href="/contacts/OGS-Contact.vcf" download="Mogos-R-OGS-Immigration.vcf">
                   <Button
                     variant="outline"
                     className="border-[#5046E5] text-[#5046E5] hover:bg-[#5046E5] hover:text-white"
                   >
                     <UserPlus className="w-4 h-4 mr-2" />
-                    Add Contact
+                    Add To Contact
                   </Button>
                 </a>
-                <Button className="bg-[#EB6769] hover:bg-[#E85D5B] text-white">Book Consultation</Button>
+                <NavigationBookingButton />
               </div>
             </div>
           </div>
         </nav>
+        
         
         {/* Main Content */}
         <main>{children}</main>
@@ -104,16 +121,41 @@ export default function RootLayout({
                   integrity.
                 </p>
                 <div className="flex space-x-4 mb-4">
-                  <div className="w-8 h-8 bg-gray-700 rounded-full"></div>
-                  <div className="w-8 h-8 bg-gray-700 rounded-full"></div>
-                  <div className="w-8 h-8 bg-gray-700 rounded-full"></div>
+                  <a href="https://www.facebook.com/OGSImmigrationServices" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                    <div className="w-9 h-9 bg-gray-700 hover:bg-[#1877F2] rounded-full flex items-center justify-center transition-colors">
+                      <Facebook className="w-5 h-5" />
+                    </div>
+                  </a>
+                  <a href="https://www.instagram.com/ogsimmigration" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                    <div className="w-9 h-9 bg-gray-700 hover:bg-[#E1306C] rounded-full flex items-center justify-center transition-colors">
+                      <Instagram className="w-5 h-5" />
+                    </div>
+                  </a>
+                  <a href="https://www.linkedin.com/company/ogs-immigration-services" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <div className="w-9 h-9 bg-gray-700 hover:bg-[#0A66C2] rounded-full flex items-center justify-center transition-colors">
+                      <Linkedin className="w-5 h-5" />
+                    </div>
+                  </a>
+                  <a href="https://www.tiktok.com/@ogsimmigration" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                    <div className="w-9 h-9 bg-gray-700 hover:bg-[#000000] rounded-full flex items-center justify-center transition-colors">
+                      <TikTok className="w-5 h-5" />
+                    </div>
+                  </a>
+                  <a href="https://x.com/OGSImmigration" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                    <div className="w-9 h-9 bg-gray-700 hover:bg-[#1DA1F2] rounded-full flex items-center justify-center transition-colors">
+                      <Twitter className="w-5 h-5" />
+                    </div>
+                  </a>
                 </div>
-                <a href="/contacts/OGS-Contact.vcf" download="OGS-Immigration-Services.vcf">
-                  <Button className="bg-[#EB6769] hover:bg-[#E85D5B] text-white">
-                    <Phone className="w-4 h-4 mr-2" />
-                    Add to Contacts
-                  </Button>
-                </a>
+                <div className="flex space-x-3">
+                  <a href="/contacts/OGS-Contact.vcf" download="OGS-Immigration-Services.vcf">
+                    <Button variant="outline" className="border-white text-white hover:bg-white hover:text-[#111827]">
+                      <Phone className="w-4 h-4 mr-2" />
+                      Add To Contact
+                    </Button>
+                  </a>
+                  <FooterBookingButton />
+                </div>
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
@@ -167,7 +209,7 @@ export default function RootLayout({
               </div>
             </div>
             <div className="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-              <p>&copy; 2024 OGS Immigration Services. All rights reserved.</p>
+              <p>&copy; 2025 OGS Immigration Services. All rights reserved.</p>
             </div>
           </div>
         </footer>

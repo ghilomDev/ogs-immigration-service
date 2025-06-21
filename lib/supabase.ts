@@ -11,8 +11,8 @@ export type ConsultationBooking = {
   last_name: string
   email: string
   phone: string
-  appointment_date: string
-  appointment_time: string
+  appointment_date?: string | null
+  appointment_time?: string | null
   service_type?: string | null
   additional_info?: string | null
   status?: string
