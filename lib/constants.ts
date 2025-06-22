@@ -82,32 +82,30 @@ export const aboutWhyChooseUsData = {
   ],
 };
 
-// Additional Services Section data
 export const additionalServicesData = [
   {
     iconName: 'Users',
     title: 'Family-Based Immigration',
     description:
-      'Uniting families through precise application support for spouse, parent, and child visas.',
+      'Uniting families through accurate form preparation and submission for spouse, parent, and child immigration petitions.',
     link: '/services/family',
   },
   {
     iconName: 'Building',
     title: 'Employment Visas',
     description:
-      'Navigating work-based immigration options for professionals, skilled workers, and investors.',
+      'Expert support for work-based immigration including skilled professionals, investors, and temporary workers.',
     link: '/services/employment',
   },
   {
     iconName: 'Award',
     title: 'Citizenship & Naturalization',
     description:
-      'Complete support for the naturalization process, from eligibility assessment to oath ceremony.',
+      'Comprehensive assistance with the naturalization process—from eligibility checks to interview prep and oath ceremony support.',
     link: '/services/citizenship',
   },
 ];
 
-// Detailed Services Section data
 export const detailedServicesData = [
   {
     iconName: 'FileText',
@@ -115,15 +113,23 @@ export const detailedServicesData = [
     badgeText: 'Most Popular',
     badgeColor: 'green',
     description:
-      'Expert assistance with a wide range of USCIS forms, ensuring accuracy and timely submission for a smooth application process.',
+      'Expert assistance with a wide range of USCIS and immigration forms, ensuring accuracy and timely submission for a smooth application process.',
     features: [
-      { text: 'Form I-485 (Adjustment of Status)' },
-      { text: 'Form I-130 (Family-Based Petitions)' },
-      { text: 'Form I-765 (Work Authorization)' },
-      { text: 'Form N-400 (Naturalization)' },
+      { text: 'Form I-129F – Petition for Alien Fiancé(e)' },
+      { text: 'Form I-130 – Petition for Alien Relative' },
+      { text: 'Form I-131 – Application for Travel Document' },
+      { text: 'Form I-485 – Application to Register Permanent Residence or Adjust Status' },
+      { text: 'Form I-589 – Application for Asylum and Withholding of Removal' },
+      { text: 'Form I-864 – Affidavit of Support' },
+      { text: 'Form N-400 – Application for Naturalization' },
+      { text: 'Form I-765 – Application for Employment Authorization' },
+      { text: 'Form DS-160 – Nonimmigrant Visa Application' },
+      { text: 'Form DS-260 – Immigrant Visa Application' },
     ],
-    processingTime: '1-2 weeks processing',
-    // learnMoreHref: "/services/forms"
+    processingTime: '1–2 weeks processing',
+    // learnMoreHref: "/services/forms",
+    checklistNote: '[Checklist for each form – coming soon]',
+    feesNote: '[Government filing fees + MERCCY.COM service fees – to be added]',
   },
   {
     iconName: 'Shield',
@@ -131,15 +137,18 @@ export const detailedServicesData = [
     badgeText: 'Specialized Care',
     badgeColor: 'blue',
     description:
-      'Compassionate and thorough support for asylum cases, helping you navigate complex legal requirements with dignity.',
+      'Compassionate and thorough support for asylum cases within the U.S., helping you compile and submit a strong application package with dignity.',
     features: [
-      { text: 'Initial asylum application (Form I-589)' },
-      { text: 'Case preparation and documentation' },
-      { text: 'Interview preparation and support' },
-      { text: 'Appeals and follow-up procedures' },
+      { text: 'Complete Form I-589 asylum application' },
+      { text: 'Document drafting and organization' },
+      { text: 'Guidance on required personal statements and evidence' },
+      { text: 'Preparation for the USCIS interview' },
+      { text: 'Follow-up support and appeal guidance (if needed)' },
     ],
     processingTime: 'Ongoing support',
-    // learnMoreHref: "/services/asylum"
+    // learnMoreHref: "/services/asylum",
+    checklistNote: '[Checklist: What the client must provide – to be added]',
+    packageNote: '[Details of what an asylum package includes – coming soon]',
   },
   {
     iconName: 'Languages',
@@ -147,14 +156,14 @@ export const detailedServicesData = [
     badgeText: 'Fast Turnaround',
     badgeColor: 'purple',
     description:
-      'Accurate and certified translations of legal documents for immigration purposes, maintaining linguistic integrity.',
+      'Accurate and certified translations of legal documents for immigration purposes, maintaining linguistic and legal integrity.',
     features: [
-      { text: 'Birth certificates and marriage certificates' },
+      { text: 'Birth and marriage certificates' },
       { text: 'Educational transcripts and diplomas' },
       { text: 'Medical records and police certificates' },
-      { text: 'USCIS-accepted certification' },
+      { text: 'Certified translations accepted by USCIS' },
     ],
-    processingTime: '2-5 business days',
+    processingTime: '2–5 business days',
     // learnMoreHref: "/services/translation"
   },
   {
@@ -163,11 +172,11 @@ export const detailedServicesData = [
     badgeText: 'Comprehensive',
     badgeColor: 'orange',
     description:
-      'Guidance through various visa application processes, from family-based to employment visas, ensuring compliance.',
+      'Guidance through various visa application processes, from family-based to employment visas, ensuring accurate documentation and compliance.',
     features: [
       { text: 'Tourist and visitor visas (B-1/B-2)' },
       { text: 'Student visas (F-1, M-1)' },
-      { text: 'Work visas (H-1B, L-1, O-1)' },
+      { text: 'Employment visas (H-1B, L-1, O-1)' },
       { text: 'Fiancé visas (K-1)' },
     ],
     processingTime: 'Varies by visa type',
