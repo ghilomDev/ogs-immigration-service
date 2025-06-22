@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 // Base URL for the website (used for canonical URLs and site maps)
-export const baseUrl = 'https://ogsimmigrationservices.com';
+export const baseUrl = 'https://merccy.com';
 
 // Company/website information constants
 export const siteInfo = {
