@@ -29,7 +29,7 @@ export async function sendContactEmails(data: {
               <!-- Logo -->
               <tr>
                 <td align="center" style="padding-bottom: 30px;">
-                  <img src="https://ogsimmigration.com/images/logo-2.svg" alt="OGS Immigration" width="150" style="display: block;" />
+                  <img src="https://www.merccy.com/images/logo-2.svg" alt="OGS Immigration" width="150" style="display: block;" />
                 </td>
               </tr>
 
@@ -64,7 +64,7 @@ export async function sendContactEmails(data: {
               <!-- Add to Contact Button -->
               <tr>
                 <td align="center" style="padding-top: 30px;">
-                  <a href="https://ogsimmigration.com/contacts/OGS-Contact.vcf" download style="background-color: #2c3e50; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-size: 16px;">
+                  <a href="https://www.merccy.com/contacts/OGS-Contact.vcf" download style="background-color: #2c3e50; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-size: 16px;">
                     📇 Add to Contacts
                   </a>
                 </td>
@@ -83,7 +83,7 @@ export async function sendContactEmails(data: {
               <tr>
                 <td style="font-size: 12px; color: #888; text-align: center; padding-top: 40px;">
                   © ${new Date().getFullYear()} OGS Immigration · All rights reserved<br/>
-                  <a href="https://ogsimmigration.com" style="color: #888; text-decoration: none;">ogsimmigration.com</a>
+                  <a href="https://www.merccy.com" style="color: #888; text-decoration: none;">www.merccy.com</a>
                 </td>
               </tr>
 
