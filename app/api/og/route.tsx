@@ -1,10 +1,8 @@
 // OG Image Component for dynamic social sharing images
 // This will be used to generate the OpenGraph preview images
-
+export const dynamic = 'force-dynamic'; // Ensures the image is always generated fresh
 import { ImageResponse } from 'next/og';
 import { siteInfo } from '@/lib/seo';
-
-export const runtime = 'edge';
 
 export async function GET(request: Request) {
   try {
